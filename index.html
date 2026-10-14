@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nicholas Giangregorio — Graduate Student, Business Analytics</title>
+<meta name="description" content="Nicholas Giangregorio — Graduate Student in Business Analytics at Babson College. Analytics projects, education, and experience.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0b0f1a;
+    --bg-alt: #11172a;
+    --card: #141b30;
+    --card-border: #262f4d;
+    --text: #e7e9f3;
+    --muted: #9099b8;
+    --accent: #7c5cff;
+    --accent-2: #22d3ee;
+    --gradient: linear-gradient(135deg, var(--accent), var(--accent-2));
+    --radius: 16px;
+    --shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background: radial-gradient(1200px 600px at 80% -10%, rgba(124, 92, 255, 0.18), transparent 60%),
+                radial-gradient(900px 500px at -10% 10%, rgba(34, 211, 238, 0.12), transparent 55%),
+                var(--bg);
+    color: var(--text);
+    font-family: "Inter", system-ui, -apple-system, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3 { font-family: "Sora", "Inter", sans-serif; letter-spacing: -0.02em; }
+
+  a { color: var(--accent-2); }
+
+  .wrap {
+    max-width: 880px;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+
+  /* ---------- Nav ---------- */
+  nav.topnav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    backdrop-filter: saturate(180%) blur(14px);
+    background: rgba(11, 15, 26, 0.72);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+  nav.topnav .wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-block: 0.85rem;
+    gap: 1rem;
+  }
+  .brand {
+    font-family: "Sora", sans-serif;
+    font-weight: 800;
+    font-size: 1.05rem;
+    color: var(--text);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .brand span { background: var(--gradient); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .nav-links {
+    display: flex;
+    gap: 1.25rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .nav-links::-webkit-scrollbar { display: none; }
+  .nav-links li { list-style: none; }
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.92rem;
+    font-weight: 500;
+    white-space: nowrap;
+    transition: color 0.2s ease;
+  }
+  .nav-links a:hover { color: var(--text); }
+
+  /* ---------- Hero ---------- */
+  header.hero {
+    text-align: center;
+    padding-block: 4.5rem 3rem;
+  }
+  .avatar-ring {
+    width: 96px;
+    height: 96px;
+    margin: 0 auto 1.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--gradient);
+    font-family: "Sora", sans-serif;
+    font-weight: 800;
+    font-size: 1.8rem;
+    color: #0b0f1a;
+    box-shadow: 0 0 0 4px rgba(124, 92, 255, 0.15), var(--shadow);
+  }
+  header.hero h1 {
+    font-size: clamp(2.1rem, 6vw, 3.2rem);
+    margin: 0 0 0.6rem;
+    font-weight: 800;
+  }
+  header.hero .tagline {
+    font-size: clamp(1rem, 2.6vw, 1.25rem);
+    color: var(--muted);
+    margin: 0 0 1.75rem;
+  }
+  header.hero .tagline .highlight {
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: 600;
+  }
+
+  .contact-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.25rem;
+  }
+  .contact-links li { list-style: none; }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.55rem 1.1rem;
+    border-radius: 999px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border: 1px solid var(--card-border);
+    background: var(--card);
+    color: var(--text);
+    transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+  }
+  .btn:hover { transform: translateY(-2px); border-color: var(--accent); box-shadow: var(--shadow); }
+  .btn.primary {
+    background: var(--gradient);
+    color: #0b0f1a;
+    border: none;
+  }
+  .btn svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+  .location-badge {
+    display: inline-block;
+    font-size: 0.85rem;
+    color: var(--muted);
+    border: 1px dashed var(--card-border);
+    border-radius: 999px;
+    padding: 0.25rem 0.9rem;
+  }
+
+  /* ---------- Sections ---------- */
+  section { padding-block: 2.75rem; scroll-margin-top: 4.5rem; }
+  section + section { border-top: 1px solid rgba(255, 255, 255, 0.05); }
+
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    margin-bottom: 1.75rem;
+  }
+  .section-head .num {
+    font-family: "Sora", sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--accent-2);
+  }
+  .section-head h2 {
+    font-size: clamp(1.4rem, 3vw, 1.8rem);
+    margin: 0;
+  }
+
+  p.lede { color: var(--muted); max-width: 65ch; }
+
+  /* ---------- Cards ---------- */
+  .card {
+    background: linear-gradient(180deg, var(--card), var(--bg-alt));
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius);
+    padding: 1.4rem 1.5rem;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(124, 92, 255, 0.5);
+    box-shadow: var(--shadow);
+  }
+  .card + .card { margin-top: 1rem; }
+
+  .entry-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.25rem 1rem;
+  }
+  .entry-header h3 { margin: 0; font-size: 1.08rem; }
+  .entry-dates {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--accent-2);
+    background: rgba(34, 211, 238, 0.1);
+    padding: 0.2rem 0.65rem;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+  .entry-subtitle { color: var(--muted); font-size: 0.92rem; margin: 0.3rem 0 0.75rem; }
+  .card ul { margin: 0; padding-left: 1.1rem; color: #c7cce0; }
+  .card ul li { margin-bottom: 0.35rem; }
+  .card ul li:last-child { margin-bottom: 0; }
+
+  /* ---------- Projects grid ---------- */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1rem;
+  }
+  .projects-grid .card { margin-top: 0 !important; }
+  .tag {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: rgba(124, 92, 255, 0.12);
+    padding: 0.2rem 0.6rem;
+    border-radius: 6px;
+    margin-bottom: 0.65rem;
+  }
+
+  /* ---------- Skills ---------- */
+  ul.skills {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    padding: 0;
+    margin: 0;
+  }
+  ul.skills li { list-style: none; }
+  ul.skills li span {
+    display: inline-block;
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    position: relative;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+  }
+  ul.skills li span:hover {
+    border-color: transparent;
+    background: var(--gradient);
+    color: #0b0f1a;
+    font-weight: 700;
+    transform: translateY(-2px);
+  }
+
+  /* ---------- Experience timeline ---------- */
+  .timeline {
+    position: relative;
+    padding-left: 1.5rem;
+    border-left: 2px solid var(--card-border);
+  }
+  .timeline .card { position: relative; margin-left: 0.5rem; }
+  .timeline .card::before {
+    content: "";
+    position: absolute;
+    left: -2.05rem;
+    top: 1.6rem;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--gradient);
+    box-shadow: 0 0 0 4px rgba(124, 92, 255, 0.15);
+  }
+
+  /* ---------- Reveal animation ---------- */
+  .reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+  }
+
+  /* ---------- Footer ---------- */
+  footer {
+    text-align: center;
+    padding-block: 2.5rem 3.5rem;
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+  footer a { color: var(--muted); text-decoration: none; }
+  footer a:hover { color: var(--accent-2); }
+  .back-to-top {
+    display: inline-block;
+    margin-top: 1rem;
+    font-size: 0.8rem;
+    color: var(--muted);
+    text-decoration: none;
+    border: 1px solid var(--card-border);
+    border-radius: 999px;
+    padding: 0.4rem 0.9rem;
+  }
+  .back-to-top:hover { color: var(--text); border-color: var(--accent); }
+
+  @media (max-width: 480px) {
+    .nav-links { gap: 0.9rem; }
+    .timeline { padding-left: 1.1rem; }
+    .timeline .card::before { left: -1.65rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="wrap">
+    <a class="brand" href="#top">N<span>G</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="wrap" id="top">
+
+  <header class="hero">
+    <div class="avatar-ring">NG</div>
+    <h1>Nicholas Giangregorio</h1>
+    <p class="tagline"><span class="highlight">Graduate Student</span> in Business Analytics · Babson College</p>
+    <ul class="contact-links">
+      <li>
+        <a class="btn primary" href="mailto:ngiangregorio1@babson.edu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z" stroke="none"/><path d="M4 6h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z"/><path d="M2 7l10 7 10-7"/></svg>
+          Email
+        </a>
+      </li>
+      <li>
+        <a class="btn" href="https://www.linkedin.com/in/nick-giangregorio-629a10331/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.94 5a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM3.2 8.75h3.5v12H3.2zM9.2 8.75h3.35v1.64h.05c.47-.88 1.6-1.8 3.3-1.8 3.53 0 4.18 2.32 4.18 5.34v6.82h-3.5v-6.05c0-1.44-.03-3.3-2.01-3.3-2.02 0-2.33 1.58-2.33 3.2v6.15H9.2z"/></svg>
+          LinkedIn
+        </a>
+      </li>
+      <li>
+        <a class="btn" href="https://github.com/NickGiangregorio" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.58 9.58 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.85-2.34 4.7-4.57 4.94.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2z"/></svg>
+          GitHub
+        </a>
+      </li>
+    </ul>
+    <span class="location-badge">📍 Belmont, MA</span>
+  </header>
+
+  <section id="about" class="reveal">
+    <div class="section-head"><span class="num">01</span><h2>About</h2></div>
+    <p class="lede">
+      I'm a graduate student pursuing an M.S. in Business Analytics at Babson College's F.W. Olin Graduate
+      School of Business. I like turning messy data into clear, actionable business insight — using tools
+      like Python, SQL, Tableau, and Power BI. Below is my education, analytics projects, skills, and work
+      experience.
+    </p>
+  </section>
+
+  <section id="education" class="reveal">
+    <div class="section-head"><span class="num">02</span><h2>Education</h2></div>
+
+    <div class="card">
+      <div class="entry-header">
+        <h3>Babson College, F.W. Olin Graduate School of Business</h3>
+        <span class="entry-dates">Sep 2026 – Dec 2027</span>
+      </div>
+      <p class="entry-subtitle">M.S. in Business Analytics (Candidate) · Wellesley, MA</p>
+    </div>
+
+    <div class="card">
+      <div class="entry-header">
+        <h3>Wheaton College</h3>
+        <span class="entry-dates">Aug 2022 – May 2026</span>
+      </div>
+      <p class="entry-subtitle">B.A. in Business and Management, Concentration in Business Analytics · Norton, MA</p>
+      <ul>
+        <li>Presidential Scholarship award</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="projects" class="reveal">
+    <div class="section-head"><span class="num">03</span><h2>Analytical Projects</h2></div>
+
+    <div class="projects-grid">
+      <div class="card">
+        <span class="tag">Tableau</span>
+        <h3>Bike Share Case Study</h3>
+        <ul>
+          <li>Analyzed bike-share data in Tableau to identify trends in ridership.</li>
+          <li>Built interactive visualizations comparing casual and registered riders and usage patterns.</li>
+          <li>Framed business-focused questions to evaluate factors influencing ridership and support data-driven decisions.</li>
+          <li>Communicated findings highlighting peak ridership periods and environmental factors affecting demand.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <span class="tag">PostgreSQL</span>
+        <h3>DVD Rental</h3>
+        <ul>
+          <li>Analyzed customer, rental, and payment data using PostgreSQL and SQL aggregate functions to identify trends.</li>
+          <li>Queried and summarized transactional data to generate actionable business insights.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <span class="tag">Power BI</span>
+        <h3>AdventureWorks</h3>
+        <ul>
+          <li>Designed an interactive Power BI dashboard using AdventureWorks sales data to visualize performance, customer trends, and KPIs.</li>
+          <li>Transformed and analyzed sales data to communicate business insights visually.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <span class="tag">Python</span>
+        <h3>Bank 120</h3>
+        <ul>
+          <li>Conducted data analysis on the Bank 120 dataset using Python to answer business questions and identify patterns.</li>
+          <li>Applied Python-based data manipulation and analytical techniques to extract insights from financial data.</li>
+        </ul>
+      </div>
+    </div>
+
+    <p style="margin-top:1.25rem;">
+      <a class="btn" href="https://github.com/NickGiangregorio" target="_blank" rel="noopener">See more on GitHub →</a>
+    </p>
+  </section>
+
+  <section id="skills" class="reveal">
+    <div class="section-head"><span class="num">04</span><h2>Technical Skills</h2></div>
+    <ul class="skills">
+      <li><span>Python</span></li>
+      <li><span>SQL</span></li>
+      <li><span>Tableau</span></li>
+      <li><span>Power BI</span></li>
+      <li><span>Google Colab</span></li>
+      <li><span>R</span></li>
+      <li><span>Excel</span></li>
+      <li><span>AI tools</span></li>
+    </ul>
+  </section>
+
+  <section id="experience" class="reveal">
+    <div class="section-head"><span class="num">05</span><h2>Experience</h2></div>
+
+    <div class="timeline">
+      <div class="card">
+        <div class="entry-header">
+          <h3>Joe Sent Me</h3>
+          <span class="entry-dates">Jun 2020 – Present</span>
+        </div>
+        <p class="entry-subtitle">Bar Support Staff · Waltham, MA</p>
+        <ul>
+          <li>Coordinated with bartenders, servers, and kitchen staff to maintain efficient restaurant operations during high-volume shifts.</li>
+          <li>Maintained clean and organized food preparation, bar, and dining areas by following food safety and sanitation standards.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="entry-header">
+          <h3>Belmont DPW</h3>
+          <span class="entry-dates">Jun 2026 – Aug 2026</span>
+        </div>
+        <p class="entry-subtitle">Park Maintenance · Belmont, MA</p>
+        <ul>
+          <li>Sustained cleanliness, safety, and appearance of 15+ public parks, athletic fields, and recreational facilities.</li>
+          <li>Facilitated daily preparation and maintenance of the town pool for a clean, welcoming community environment.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="entry-header">
+          <h3>A7 Parking</h3>
+          <span class="entry-dates">Oct 2025 – Jan 2026</span>
+        </div>
+        <p class="entry-subtitle">Customer Relations / Security · Foxborough, MA</p>
+        <ul>
+          <li>Served on the event operations and guest security team for New England Patriots home games at Gillette Stadium.</li>
+          <li>Monitored assigned seating sections for 65,000 fans to ensure guest safety and enforce venue policies.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="entry-header">
+          <h3>Boston Children's Hospital</h3>
+          <span class="entry-dates">Jun 2025 – Jul 2025</span>
+        </div>
+        <p class="entry-subtitle">Outpatient Cardiology Clinic · Boston, MA</p>
+        <ul>
+          <li>Shadowed the Senior Business Administrator to gain exposure to healthcare administration and operations.</li>
+          <li>Analyzed daily workflows across the ECHO, EKG, Exercise, and Scheduling departments.</li>
+          <li>Engaged in team, operations, and budget meetings of 20+ members to learn how administrative decisions support patient care.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="entry-header">
+          <h3>Boston Baseball Camp</h3>
+          <span class="entry-dates">Jul 2022 – Jul 2024</span>
+        </div>
+        <p class="entry-subtitle">Camp Coordinator · Boston, MA</p>
+        <ul>
+          <li>Supervised approximately 150 campers ages 8–12 across 14 teams while ensuring a safe, organized, engaging camp environment.</li>
+          <li>Coordinated daily activities and operational support for coaches throughout instructional sessions.</li>
+          <li>Monitored camper safety from check-in through dismissal, addressing questions and resolving issues.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <p>
+      <a href="mailto:ngiangregorio1@babson.edu">ngiangregorio1@babson.edu</a> ·
+      <a href="https://www.linkedin.com/in/nick-giangregorio-629a10331/" target="_blank" rel="noopener">LinkedIn</a> ·
+      <a href="https://github.com/NickGiangregorio" target="_blank" rel="noopener">GitHub</a>
+    </p>
+    <p><small>&copy; <span id="year"></span> Nicholas Giangregorio</small></p>
+    <a class="back-to-top" href="#top">↑ Back to top</a>
+  </footer>
+
+</main>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+  } else {
+    document.querySelectorAll('.reveal').forEach((el) => el.classList.add('is-visible'));
+  }
+</script>
+</body>
+</html>
